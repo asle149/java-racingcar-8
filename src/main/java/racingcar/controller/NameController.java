@@ -12,7 +12,7 @@ public class NameController {
     }
 
     public CarNames collectValidCarNames() {
-        final List<String> rawNames = inputView.readCarNames();
+        List<String> rawNames = inputView.readCarNames();
         return CarNames.of(rawNames);
     }
 }

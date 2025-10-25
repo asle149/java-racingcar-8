@@ -1,7 +1,7 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class InputView {
@@ -10,27 +10,22 @@ public class InputView {
 
     public List<String> readCarNames() {
         System.out.println(INPUT_GUIDE);
-        final String line = Console.readLine();
-        final List<String> tokens = splitByComma(line);
-        ensureNoEmpty(tokens);
-        return tokens;
+        String line = Console.readLine();
+        ensureNotNull(line);
+        List<String> names = Arrays.stream(line.split(",", -1)).toList();
+        ensureNoEmpty(names);
+        return names;
     }
 
-    private List<String> splitByComma(final String line) {
-        if (line == null) {
-            throw new IllegalArgumentException("입력이 null 입니다.");
+    private void ensureNotNull(final String input) {
+        if (input == null) {
+            throw new IllegalArgumentException("입력이 null입니다.");
         }
-        final String[] parts = line.split(",", -1);
-        final List<String> result = new ArrayList<>(parts.length);
-        for (final String p : parts) {
-            result.add(p);
-        }
-        return result;
     }
 
-    private void ensureNoEmpty(final List<String> tokens) {
-        for (final String t : tokens) {
-            if (t == null || t.trim().isEmpty()) {
+    private void ensureNoEmpty(final List<String> names) {
+        for (String name : names) {
+            if (name == null || name.trim().isEmpty()) {
                 throw new IllegalArgumentException("빈 이름은 허용되지 않습니다.");
             }
         }

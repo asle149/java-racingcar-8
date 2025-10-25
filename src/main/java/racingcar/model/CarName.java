@@ -9,15 +9,15 @@ public class CarName {
     private final String value;
 
     public CarName(final String value) {
-        final String trimmed = Objects.requireNonNull(value, "name must not be null").trim();
+        String trimmed = Objects.requireNonNull(value, "이름은 null일 수 없습니다.").trim();
         validateLength(trimmed);
         this.value = trimmed;
     }
 
     private void validateLength(final String name) {
-        final int len = name.length();
-        if (len < MIN_LENGTH || len > MAX_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 1~5자여야 합니다: \"" + name + "\"");
+        int length = name.length();
+        if (length < MIN_LENGTH || length > MAX_LENGTH) {
+            throw new IllegalArgumentException("자동차 이름은 1~5자여야 합니다: " + name);
         }
     }
 
