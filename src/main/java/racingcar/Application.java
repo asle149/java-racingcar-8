@@ -1,7 +1,14 @@
 package racingcar;
 
+import racingcar.controller.NameController;
+import racingcar.model.CarNames;
+import racingcar.view.InputView;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        final NameController nameController = new NameController(new InputView());
+        final CarNames carNames = nameController.collectValidCarNames();
+
+
     }
 }
