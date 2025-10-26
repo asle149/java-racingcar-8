@@ -20,5 +20,7 @@ public class RacingController {
             cars.moveAll();
             outputView.printEachRound(cars);
         }
+
+        outputView.printWinners(cars.findWinners());
     }
 }

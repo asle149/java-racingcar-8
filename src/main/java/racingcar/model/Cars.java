@@ -11,11 +11,7 @@ public class Cars {
     }
 
     public static Cars from(final CarNames carNames) {
-        return new Cars(
-                carNames.values().stream()
-                        .map(Car::new)
-                        .toList()
-        );
+        return new Cars(carNames.values().stream().map(Car::new).toList());
     }
 
     public void moveAll() {
@@ -23,6 +19,10 @@ public class Cars {
             int random = Randoms.pickNumberInRange(0, 9);
             car.move(random);
         }
+    }
+
+    public List<Car> findWinners() {
+        return WinnerFinder.findWinners(cars);
     }
 
     public List<Car> values() {
