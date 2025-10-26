@@ -2,10 +2,12 @@ package racingcar;
 
 import racingcar.controller.AttemptController;
 import racingcar.controller.NameController;
+import racingcar.controller.RacingController;
 import racingcar.model.AttemptCount;
 import racingcar.model.CarNames;
 import racingcar.view.AttemptInputView;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
@@ -15,5 +17,7 @@ public class Application {
         AttemptController attemptController = new AttemptController(new AttemptInputView());
         AttemptCount attemptCount = attemptController.collectValidAttemptCount();
 
+        RacingController racingController = new RacingController(new OutputView());
+        racingController.run(carNames, attemptCount);
     }
 }
